@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <!-- Gold gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="50%" style="stop-color:#daa520"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+    
+    <!-- Navy to blue gradient -->
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#1a365d"/>
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Soft glow for stars -->
+    <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#navyGrad)"/>
+  
+  <!-- Sparkle particles -->
+  <circle cx="50" cy="40" r="1" fill="#ffd700" opacity="0.6"/>
+  <circle cx="350" cy="60" r="1.2" fill="#ffd700" opacity="0.5"/>
+  <circle cx="80" cy="180" r="0.8" fill="#ffd700" opacity="0.4"/>
+  <circle cx="320" cy="200" r="1" fill="#ffd700" opacity="0.5"/>
+  <circle cx="150" cy="30" r="0.8" fill="#fff" opacity="0.3"/>
+  <circle cx="250" cy="45" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="370" cy="150" r="0.8" fill="#ffd700" opacity="0.3"/>
+  <circle cx="30" cy="120" r="1" fill="#ffd700" opacity="0.4"/>
+  
+  <!-- Cloud shape - main emblem -->
+  <path d="M120,140 
+           Q100,140 95,125 
+           Q85,115 95,100 
+           Q95,80 120,80 
+           Q135,65 160,70 
+           Q180,55 210,65 
+           Q240,55 260,75 
+           Q285,70 295,90 
+           Q315,95 310,115 
+           Q320,130 305,140
+           Z" 
+        fill="none" 
+        stroke="url(#goldGrad)" 
+        stroke-width="3"
+        filter="url(#glow)"/>
+  
+  <!-- Mosque dome -->
+  <path d="M185,130 Q200,95 215,130" 
+        fill="none" 
+        stroke="url(#goldGrad)" 
+        stroke-width="2.5"
+        stroke-linecap="round"/>
+  
+  <!-- Dome base -->
+  <line x1="180" y1="130" x2="220" y2="130" stroke="url(#goldGrad)" stroke-width="2"/>
+  
+  <!-- Crescent on dome -->
+  <path d="M200,90 
+           Q195,85 200,78 
+           Q192,82 195,90 
+           Q197,92 200,90" 
+        fill="url(#goldGrad)"
+        filter="url(#starGlow)"/>
+  
+  <!-- Left minaret with circuit lines -->
+  <line x1="155" y1="130" x2="155" y2="105" stroke="url(#goldGrad)" stroke-width="2"/>
+  <circle cx="155" cy="103" r="3" fill="url(#goldGrad)"/>
+  <line x1="155" y1="115" x2="145" y2="115" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="155" y1="120" x2="148" y2="120" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="2,2"/>
+  
+  <!-- Right minaret with circuit lines -->
+  <line x1="245" y1="130" x2="245" y2="105" stroke="url(#goldGrad)" stroke-width="2"/>
+  <circle cx="245" cy="103" r="3" fill="url(#goldGrad)"/>
+  <line x1="245" y1="115" x2="255" y2="115" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="245" y1="120" x2="252" y2="120" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="2,2"/>
+  
+  <!-- Crescent moon -->
+  <path d="M130,100 
+           Q120,90 130,80 
+           Q115,88 120,100 
+           Q125,105 130,100" 
+        fill="url(#goldGrad)"
+        filter="url(#starGlow)"/>
+  
+  <!-- Stars -->
+  <polygon points="270,85 272,90 277,90 273,94 275,99 270,96 265,99 267,94 263,90 268,90" 
+           fill="url(#goldGrad)" transform="scale(0.6) translate(175,50)" filter="url(#starGlow)"/>
+  <polygon points="140,95 141,98 144,98 142,100 143,103 140,101 137,103 138,100 136,98 139,98" 
+           fill="url(#goldGrad)" filter="url(#starGlow)"/>
+  <polygon points="260,95 261,97 263,97 261.5,99 262,101 260,100 258,101 258.5,99 257,97 259,97" 
+           fill="url(#goldGrad)" filter="url(#starGlow)"/>
+  
+  <!-- Shopping cart icon (left) -->
+  <g transform="translate(70, 105)" filter="url(#glow)">
+    <path d="M0,5 L3,5 L6,18 L20,18 L23,8 L8,8" 
+          fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="22" r="2" fill="url(#goldGrad)"/>
+    <circle cx="18" cy="22" r="2" fill="url(#goldGrad)"/>
+  </g>
+  
+  <!-- Lantern (right) -->
+  <g transform="translate(315, 95)" filter="url(#glow)">
+    <path d="M10,0 L10,5" stroke="url(#goldGrad)" stroke-width="1.5"/>
+    <path d="M5,5 L15,5 L15,8 L5,8 Z" fill="url(#goldGrad)"/>
+    <path d="M3,8 Q10,25 17,8" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+    <path d="M3,8 L3,28 Q10,35 17,28 L17,8" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+    <line x1="10" y1="28" x2="10" y2="32" stroke="url(#goldGrad)" stroke-width="1.5"/>
+    <ellipse cx="10" cy="18" rx="2" ry="3" fill="#ffd700" opacity="0.6"/>
+  </g>
+  
+  <!-- Glowing base line -->
+  <line x1="80" y1="155" x2="320" y2="155" 
+        stroke="url(#goldGrad)" 
+        stroke-width="2" 
+        filter="url(#glow)"
+        stroke-linecap="round"/>
+  
+  <!-- INSAF text -->
+  <text x="200" y="200" 
+        text-anchor="middle" 
+        font-family="Georgia, 'Times New Roman', serif" 
+        font-size="42" 
+        font-weight="bold" 
+        fill="url(#goldGrad)"
+        filter="url(#glow)"
+        letter-spacing="8">INSAF</text>
+  
+  <!-- STORE BD text -->
+  <text x="200" y="230" 
+        text-anchor="middle" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-size="18" 
+        font-weight="400" 
+        fill="#e8d5b0"
+        letter-spacing="6">STORE BD</text>
+  
+  <!-- Decorative line under text -->
+  <line x1="140" y1="245" x2="260" y2="245" 
+        stroke="url(#goldGrad)" 
+        stroke-width="1" 
+        opacity="0.5"/>
+</svg>

@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Insaaf Store BD
 
-## Getting Started
+Next.js (App Router + TypeScript + Tailwind v4) build for Insaaf Store BD: public offers site, purchase flow, AI chatbot, reviews, and protected admin dashboard with Supabase.
 
-First, run the development server:
+### Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# http://localhost:3000
+# Admin login at http://localhost:3000/admin/login
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create `.env.local`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=public_anon_key
+SUPABASE_SERVICE_ROLE_KEY=service_role_key # server-only
+```
 
-## Learn More
+### Supabase tables
 
-To learn more about Next.js, take a look at the following resources:
+```sql
+create table packages (
+	id text primary key,
+	name text not null,
+	description text,
+	price numeric not null,
+	currency text default 'BDT',
+	status text check (status in ('active','hidden','inactive')) default 'active',
+	features text[] default '{}',
+	groups jsonb default '{}',
+	created_at timestamptz default now(),
+	updated_at timestamptz default now()
+);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+create table orders (
+	id uuid primary key default gen_random_uuid(),
+	full_name text,
+	email text,
+	mobile text,
+	package_id text references packages(id),
+	source text,
+	transaction_id text,
+	price numeric,
+	currency text default 'BDT',
+	status text check (status in ('pending','approved','rejected')) default 'pending',
+	notes text,
+	created_at timestamptz default now()
+);
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+create table chat_entries (
+	id text primary key,
+	topic text,
+	prompt text,
+	response text,
+	enabled boolean default true,
+	tags text[] default '{}',
+	created_at timestamptz default now()
+);
 
-## Deploy on Vercel
+create table reviews (
+	id uuid primary key default gen_random_uuid(),
+	name text not null,
+	rating int check (rating between 1 and 5),
+	comment text not null,
+	source text,
+	status text check (status in ('pending','approved','rejected')) default 'pending',
+	created_at timestamptz default now()
+);
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Public home with active packages, social links, and CTA to purchase
+- Purchase form (name/email/mobile/source/transaction ID) with auto-filled price
+- Floating chatbot on all public pages using knowledge base + rules
+- Policy page (terms, privacy, refund, disclaimer)
+- Reviews page with submission + moderation (API-backed)
+- Admin dashboard (Supabase Auth) for packages, orders, analytics, chatbot knowledge, CSV export
+- API routes: `/api/packages`, `/api/orders`, `/api/chat`, `/api/reviews`
+
+### Deployment notes
+
+- Works on Netlify: set `NODE_VERSION` per Netlify, install with `npm ci`, build with `npm run build`, publish `.next`.
+- Set env vars in Netlify dashboard. Service role must stay server-only.
+- Database layer isolated in `src/lib/db.ts` for future migrations.

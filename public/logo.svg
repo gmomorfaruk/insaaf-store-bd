@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <!-- Hexagon outline -->
+  <polygon 
+    points="40,4 72,22 72,58 40,76 8,58 8,22" 
+    fill="none" 
+    stroke="#1e3a5f" 
+    stroke-width="3.5"
+    stroke-linejoin="round"
+  />
+  
+  <!-- Stylized N letter - clean diagonal -->
+  <path 
+    d="M20,58 L20,22 L28,22 L28,38 L44,22 L52,22 L52,40" 
+    fill="none" 
+    stroke="#1e3a5f" 
+    stroke-width="6" 
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  
+  <!-- Digital pixels dissolving downward -->
+  <rect x="49" y="44" width="6" height="6" fill="#1e3a5f"/>
+  <rect x="49" y="52" width="6" height="6" fill="#1e3a5f" opacity="0.85"/>
+  <rect x="49" y="60" width="6" height="6" fill="#1e3a5f" opacity="0.6"/>
+  <rect x="57" y="48" width="5" height="5" fill="#1e3a5f" opacity="0.7"/>
+  <rect x="57" y="56" width="4" height="4" fill="#1e3a5f" opacity="0.5"/>
+  <rect x="42" y="56" width="4" height="4" fill="#1e3a5f" opacity="0.5"/>
+  <rect x="62" y="54" width="3" height="3" fill="#1e3a5f" opacity="0.35"/>
+  <rect x="44" y="64" width="3" height="3" fill="#1e3a5f" opacity="0.3"/>
+  <rect x="56" y="62" width="2" height="2" fill="#1e3a5f" opacity="0.2"/>
+  
+  <!-- Text: Noor Byte -->
+  <text x="90" y="52" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="#1e3a5f">Noor</tspan><tspan fill="#64748b">Byte</tspan>
+  </text>
+</svg>
